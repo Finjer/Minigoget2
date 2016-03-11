@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="240px"
+        android:layout_height="320px"
+        android:background="@drawable/infowindowbubble">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="210px"
+            android:layout_height="320px"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="34px"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="198px"
+                android:layout_height="50px"
+                android:text="JobType"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:textColor="#F3F3F3"
+                android:textAlignment="center"
+                android:background="#00B4AD"
+                android:id="@+id/jobTypeInfo"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/linearLayout"
+                android:layout_alignParentEnd="true" />
+
+            <ScrollView
+                android:layout_width="198px"
+                android:layout_height="266px"
+                android:id="@+id/scrollView"
+                android:fillViewport="true"
+                android:layout_gravity="center_horizontal"
+                android:background="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tipInfo"
+                        android:layout_margin="1dp"
+                        android:textSize="8dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="left"
+                        android:text="Tip: "/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/startTimeInfo"
+                        android:layout_margin="1dp"
+                        android:textSize="8dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="left"
+                        android:text="Start Time: "/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/endTimeInfo"
+                        android:layout_margin="1dp"
+                        android:textSize="8dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="left"
+                        android:text="End Time: "/>
+                    <Button
+                        android:layout_width="70dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/viewJobDetail"
+                        android:text="View Detail"
+                        android:textSize="8dp"
+                        android:textColor="#F3F3F3"
+                        android:background="#00B4AD"
+                        android:layout_gravity="center" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

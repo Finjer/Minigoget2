@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MiniGoGet</string>
     <string name="action_settings">Settings</string>
+    <string name="main_bg_color">#00B4AD</string>
+    <string name="sub_bg_color_normal">#333332</string>
+    <string name="sub_bg_color_darker">#242423</string>
+    <string name="sub_bg_color_lighter">#5C5C5B</string>
+    <string name="main_text_color">#F3F3F3</string>
 </resources>
