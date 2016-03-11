@@ -11,6 +11,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by park on 2016-03-01.
@@ -22,4 +24,7 @@ public interface GoGetService {
     Call<gogetLogin> login(@Body userContainer user);
     @GET("v1/gogetters/jobs/available")
     Call<List<availableJobs>> getJobs();
+    @GET("v1/gogetters/jobs/{jobId}")
+    Call<availableJobs> getSingleJob(@Path("jobId") int currentId);
+
 }

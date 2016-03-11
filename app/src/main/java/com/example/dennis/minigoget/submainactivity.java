@@ -44,7 +44,7 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
     private GoogleMap mMap;
     private List<availableJobs> joblists;
     boolean joblist_ready=true;
-
+    private String authen_token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +54,7 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
         thiscontext = this;
         //getting intent data authentication token;
         Intent intent = this.getIntent();
-        final String authen_token = intent.getExtras().getString("authen_token");
+        authen_token = intent.getExtras().getString("authen_token");
 
         //For error message for pressing login
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -159,6 +159,7 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
                 marker_dialogfragment dialog = new marker_dialogfragment();
                 dialog.setJoblist(joblists);
                 dialog.setCurrentClasst(thisclass);
+                dialog.setAuthenToken(authen_token);
                 dialog.setPosition(Integer.parseInt(marker.getSnippet()));
                 dialog.show(getFragmentManager(), "test");
             }

@@ -33,6 +33,8 @@ public class marker_dialogfragment extends DialogFragment {
     private submainactivity current_class=null;
     //Finding position of job within availablejobs
     private int position;
+    //Authentication Token to be used for Intent
+    private String authen_token;
 
     //list of textview and buttons that used in current dialog
     TextView job_type, job_tip, job_starttime, job_endtime;
@@ -67,6 +69,7 @@ public class marker_dialogfragment extends DialogFragment {
                 Intent intent = new Intent(current_class, Job_Detail_Activity.class);
                 Log.d("intent test: ",""+joblists.get(position).getId());
                 intent.putExtra("goget_id",joblists.get(position).getId());
+                intent.putExtra("authen_token",authen_token);
                 current_class.startActivity(intent);
                 dismiss();
             }
@@ -83,6 +86,9 @@ public class marker_dialogfragment extends DialogFragment {
     }
     public void setPosition (int number){
         position = number;
+    }
+    public void setAuthenToken(String authen){
+        authen_token = authen;
     }
 
 }
