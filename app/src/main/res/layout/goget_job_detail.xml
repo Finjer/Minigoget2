@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!--Title name of Job detail section-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,91 +18,215 @@
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentEnd="true" />
-    <LinearLayout
-        android:id="@+id/singlejob_upper_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="vertical" >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <!--Upper layer of job detail where you put details of tips and its dynamically generatable, notable element of job-->
+
+
+            <LinearLayout
+                android:id="@+id/singlejob_upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textColor="#6D6D6D"
+                        android:textStyle="bold"
+                        android:text="Tip: " />
+                    <TextView
+                        android:id="@+id/singlejob_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="40dp"
+                        android:textColor="#6D6D6D"
+                        android:textStyle="bold"
+                        android:text="" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- Line saperator for design -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#6D6D6D"/>
+
+            </LinearLayout>
+
+            <!--Middle Layer where dynamically put Tasks posted by poster-->
+            <LinearLayout
+                android:id="@+id/singlejob_middle_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--Special
+                <RelativeLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/marker">
+                    <TextView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:text="B"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Title:  title space"
+                        android:textStyle="bold"
+                        android:textSize="13dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="5dp"
+                            android:src="@drawable/marker"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="loooooooooooooooooong texts to test it out like helll herpderp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="top">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="5dp"
+                            android:src="@drawable/marker"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="loooooooooooooooooong texts to test it out like helll herpderp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+        -->
+            </LinearLayout>
+
+
+            <!-- Line saperator for design -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#6D6D6D"/>
+
+            </LinearLayout>
+
+
+            <!--Bottom layer of Job Detail which to put Description and poster's detail-->
+            <TextView
+                android:id="@+id/singlejob_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#6D6D6D"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Super loooooong Descrsdfsdfsdf dsfsdsdfsdfsdf sdfsfsfsdfdsfds fdsfdsipton with stufff\nand more sdfdsfdsfdsf
+        ssadsadsadsadsfdsfsdfdsfdsfdsfdsfdsfdsfdsfdsfdsfstufffs and more\n etc etc" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:id="@+id/singlejob_gogetter_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/runningman_tale_color_01"/>
+                <TextView
+                    android:id="@+id/singlejob_gogetter_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Name of gogetter"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/singlejob_claim"
+                android:layout_margin="10dp"
+                android:text="Claim Job"
+                android:textSize="27dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#F3F3F3"
+                android:background="#00B4AD"
+                android:layout_gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textColor="#6D6D6D"
-                android:textStyle="bold"
-                android:text="Tip: " />
-            <TextView
-                android:id="@+id/singlejob_tip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="40dp"
-                android:textColor="#6D6D6D"
-                android:textStyle="bold"
-                android:text="" />
+                android:layout_marginLeft="20dp"
+                android:text="\nsuper long test\n\ntry go scroll down\n\
+                because i set scrollview on itn\n\n\n\n\n\n\sdlkfj\nakfijs\niwe\nksdjfdsk\n\n\nkdsfskd\n\n\n\nkdsjf\n\n\nName of gogetter"
+                android:textSize="20sp"/>
+
+
+
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="5dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#6D6D6D"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:textColor="#6D6D6D"
-        android:textStyle="bold"
-        android:text="Task section" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="5dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#6D6D6D"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:textColor="#6D6D6D"
-        android:textStyle="bold"
-        android:text="Description section" />
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewJobDetail_dialog"
-        android:layout_margin="10dp"
-        android:text="Claim Job"
-        android:textSize="27dp"
-        android:textColor="#F3F3F3"
-        android:background="#00B4AD"
-        android:layout_gravity="center" />
 
 </LinearLayout>
