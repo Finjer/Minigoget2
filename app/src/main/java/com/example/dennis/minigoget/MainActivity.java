@@ -34,6 +34,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         //Input retrieving point.
         minigoget_email = (EditText) findViewById(R.id.mainmenu_edittext_email);
         minigoget_password = (EditText) findViewById(R.id.mainmenu_edittext_password);
