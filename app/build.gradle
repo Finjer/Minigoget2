@@ -28,4 +28,5 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'io.realm:realm-android:0.84.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

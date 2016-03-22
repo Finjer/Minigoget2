@@ -3,8 +3,10 @@ package com.example.dennis.minigoget.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
 
-public class gogetLogin {
+
+public class gogetLogin extends RealmObject {
 
     @SerializedName("success")
     @Expose

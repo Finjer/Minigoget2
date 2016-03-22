@@ -1,5 +1,7 @@
 package com.example.dennis.minigoget.model;
 
+import io.realm.RealmObject;
+
 /**
  * Created by park on 2016-03-01.
  * a class that contains user class that stores user email and password which will be sub_object of userContainer class

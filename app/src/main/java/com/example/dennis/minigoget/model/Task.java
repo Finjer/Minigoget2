@@ -3,7 +3,9 @@ package com.example.dennis.minigoget.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Task {
+import io.realm.RealmObject;
+
+public class Task extends RealmObject {
 
     @SerializedName("id")
     @Expose
@@ -13,7 +15,7 @@ public class Task {
     private Integer jobId;
     @SerializedName("gogetter_id")
     @Expose
-    private Object gogetterId;
+    private Integer gogetterId;
     @SerializedName("name")
     @Expose
     private String name;
@@ -34,10 +36,10 @@ public class Task {
     private String startAt;
     @SerializedName("end_at")
     @Expose
-    private Object endAt;
+    private String endAt;
     @SerializedName("ended_at")
     @Expose
-    private Object endedAt;
+    private String endedAt;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -49,7 +51,7 @@ public class Task {
     private Integer order;
     @SerializedName("linked_job_id")
     @Expose
-    private Object linkedJobId;
+    private Integer linkedJobId;
 
     /**
      *
@@ -92,7 +94,7 @@ public class Task {
      * @return
      * The gogetterId
      */
-    public Object getGogetterId() {
+    public Integer getGogetterId() {
         return gogetterId;
     }
 
@@ -101,7 +103,7 @@ public class Task {
      * @param gogetterId
      * The gogetter_id
      */
-    public void setGogetterId(Object gogetterId) {
+    public void setGogetterId(Integer gogetterId) {
         this.gogetterId = gogetterId;
     }
 
@@ -218,7 +220,7 @@ public class Task {
      * @return
      * The endAt
      */
-    public Object getEndAt() {
+    public String getEndAt() {
         return endAt;
     }
 
@@ -227,7 +229,7 @@ public class Task {
      * @param endAt
      * The end_at
      */
-    public void setEndAt(Object endAt) {
+    public void setEndAt(String endAt) {
         this.endAt = endAt;
     }
 
@@ -236,7 +238,7 @@ public class Task {
      * @return
      * The endedAt
      */
-    public Object getEndedAt() {
+    public String getEndedAt() {
         return endedAt;
     }
 
@@ -245,7 +247,7 @@ public class Task {
      * @param endedAt
      * The ended_at
      */
-    public void setEndedAt(Object endedAt) {
+    public void setEndedAt(String endedAt) {
         this.endedAt = endedAt;
     }
 
@@ -308,7 +310,7 @@ public class Task {
      * @return
      * The linkedJobId
      */
-    public Object getLinkedJobId() {
+    public Integer getLinkedJobId() {
         return linkedJobId;
     }
 
@@ -317,7 +319,7 @@ public class Task {
      * @param linkedJobId
      * The linked_job_id
      */
-    public void setLinkedJobId(Object linkedJobId) {
+    public void setLinkedJobId(Integer linkedJobId) {
         this.linkedJobId = linkedJobId;
     }
 

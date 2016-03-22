@@ -1,9 +1,13 @@
 package com.example.dennis.minigoget.model;
 
+import android.content.Intent;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Poster {
+import io.realm.RealmObject;
+
+public class Poster extends RealmObject {
 
     @SerializedName("id")
     @Expose
@@ -34,10 +38,10 @@ public class Poster {
     private String gender;
     @SerializedName("friends_count")
     @Expose
-    private Object friendsCount;
+    private Integer friendsCount;
     @SerializedName("last_location")
     @Expose
-    private Object lastLocation;
+    private Double lastLocation;
     @SerializedName("last_location_lat")
     @Expose
     private Double lastLocationLat;
@@ -46,10 +50,10 @@ public class Poster {
     private Double lastLocationLong;
     @SerializedName("fb_friends")
     @Expose
-    private Object fbFriends;
+    private Integer fbFriends;
     @SerializedName("fb_likes")
     @Expose
-    private Object fbLikes;
+    private Integer fbLikes;
     @SerializedName("fb_flag")
     @Expose
     private Boolean fbFlag;
@@ -58,7 +62,7 @@ public class Poster {
     private Boolean phoneVerified;
     @SerializedName("phone_confirm_code")
     @Expose
-    private Object phoneConfirmCode;
+    private Integer phoneConfirmCode;
     @SerializedName("location_updated_at")
     @Expose
     private String locationUpdatedAt;
@@ -70,13 +74,13 @@ public class Poster {
     private String currentRole;
     @SerializedName("default_location")
     @Expose
-    private Object defaultLocation;
+    private Double defaultLocation;
     @SerializedName("default_location_lat")
     @Expose
-    private Object defaultLocationLat;
+    private Double defaultLocationLat;
     @SerializedName("default_location_long")
     @Expose
-    private Object defaultLocationLong;
+    private Double defaultLocationLong;
     @SerializedName("avatar_uploader")
     @Expose
     private AvatarUploader avatarUploader;
@@ -88,19 +92,19 @@ public class Poster {
     private Boolean emailNotificationsEnabled;
     @SerializedName("v1id")
     @Expose
-    private Object v1id;
+    private Integer v1id;
     @SerializedName("banned")
     @Expose
     private Boolean banned;
     @SerializedName("business_id")
     @Expose
-    private Object businessId;
+    private Integer businessId;
     @SerializedName("phone_verified_num")
     @Expose
     private String phoneVerifiedNum;
     @SerializedName("intercom_id")
     @Expose
-    private Object intercomId;
+    private Integer intercomId;
     @SerializedName("student")
     @Expose
     private Boolean student;
@@ -278,7 +282,7 @@ public class Poster {
      * @return
      * The friendsCount
      */
-    public Object getFriendsCount() {
+    public Integer getFriendsCount() {
         return friendsCount;
     }
 
@@ -287,7 +291,7 @@ public class Poster {
      * @param friendsCount
      * The friends_count
      */
-    public void setFriendsCount(Object friendsCount) {
+    public void setFriendsCount(Integer friendsCount) {
         this.friendsCount = friendsCount;
     }
 
@@ -296,7 +300,7 @@ public class Poster {
      * @return
      * The lastLocation
      */
-    public Object getLastLocation() {
+    public Double getLastLocation() {
         return lastLocation;
     }
 
@@ -305,7 +309,7 @@ public class Poster {
      * @param lastLocation
      * The last_location
      */
-    public void setLastLocation(Object lastLocation) {
+    public void setLastLocation(Double lastLocation) {
         this.lastLocation = lastLocation;
     }
 
@@ -350,7 +354,7 @@ public class Poster {
      * @return
      * The fbFriends
      */
-    public Object getFbFriends() {
+    public Integer getFbFriends() {
         return fbFriends;
     }
 
@@ -359,7 +363,7 @@ public class Poster {
      * @param fbFriends
      * The fb_friends
      */
-    public void setFbFriends(Object fbFriends) {
+    public void setFbFriends(Integer fbFriends) {
         this.fbFriends = fbFriends;
     }
 
@@ -368,7 +372,7 @@ public class Poster {
      * @return
      * The fbLikes
      */
-    public Object getFbLikes() {
+    public Integer getFbLikes() {
         return fbLikes;
     }
 
@@ -377,7 +381,7 @@ public class Poster {
      * @param fbLikes
      * The fb_likes
      */
-    public void setFbLikes(Object fbLikes) {
+    public void setFbLikes(Integer fbLikes) {
         this.fbLikes = fbLikes;
     }
 
@@ -422,7 +426,7 @@ public class Poster {
      * @return
      * The phoneConfirmCode
      */
-    public Object getPhoneConfirmCode() {
+    public Integer getPhoneConfirmCode() {
         return phoneConfirmCode;
     }
 
@@ -431,7 +435,7 @@ public class Poster {
      * @param phoneConfirmCode
      * The phone_confirm_code
      */
-    public void setPhoneConfirmCode(Object phoneConfirmCode) {
+    public void setPhoneConfirmCode(Integer phoneConfirmCode) {
         this.phoneConfirmCode = phoneConfirmCode;
     }
 
@@ -494,7 +498,7 @@ public class Poster {
      * @return
      * The defaultLocation
      */
-    public Object getDefaultLocation() {
+    public Double getDefaultLocation() {
         return defaultLocation;
     }
 
@@ -503,7 +507,7 @@ public class Poster {
      * @param defaultLocation
      * The default_location
      */
-    public void setDefaultLocation(Object defaultLocation) {
+    public void setDefaultLocation(Double defaultLocation) {
         this.defaultLocation = defaultLocation;
     }
 
@@ -512,7 +516,7 @@ public class Poster {
      * @return
      * The defaultLocationLat
      */
-    public Object getDefaultLocationLat() {
+    public Double getDefaultLocationLat() {
         return defaultLocationLat;
     }
 
@@ -521,7 +525,7 @@ public class Poster {
      * @param defaultLocationLat
      * The default_location_lat
      */
-    public void setDefaultLocationLat(Object defaultLocationLat) {
+    public void setDefaultLocationLat(Double defaultLocationLat) {
         this.defaultLocationLat = defaultLocationLat;
     }
 
@@ -530,7 +534,7 @@ public class Poster {
      * @return
      * The defaultLocationLong
      */
-    public Object getDefaultLocationLong() {
+    public Double getDefaultLocationLong() {
         return defaultLocationLong;
     }
 
@@ -539,7 +543,7 @@ public class Poster {
      * @param defaultLocationLong
      * The default_location_long
      */
-    public void setDefaultLocationLong(Object defaultLocationLong) {
+    public void setDefaultLocationLong(Double defaultLocationLong) {
         this.defaultLocationLong = defaultLocationLong;
     }
 
@@ -602,7 +606,7 @@ public class Poster {
      * @return
      * The v1id
      */
-    public Object getV1id() {
+    public Integer getV1id() {
         return v1id;
     }
 
@@ -611,7 +615,7 @@ public class Poster {
      * @param v1id
      * The v1id
      */
-    public void setV1id(Object v1id) {
+    public void setV1id(Integer v1id) {
         this.v1id = v1id;
     }
 
@@ -638,7 +642,7 @@ public class Poster {
      * @return
      * The businessId
      */
-    public Object getBusinessId() {
+    public Integer getBusinessId() {
         return businessId;
     }
 
@@ -647,7 +651,7 @@ public class Poster {
      * @param businessId
      * The business_id
      */
-    public void setBusinessId(Object businessId) {
+    public void setBusinessId(Integer businessId) {
         this.businessId = businessId;
     }
 
@@ -674,7 +678,7 @@ public class Poster {
      * @return
      * The intercomId
      */
-    public Object getIntercomId() {
+    public Integer getIntercomId() {
         return intercomId;
     }
 
@@ -683,7 +687,7 @@ public class Poster {
      * @param intercomId
      * The intercom_id
      */
-    public void setIntercomId(Object intercomId) {
+    public void setIntercomId(Integer intercomId) {
         this.intercomId = intercomId;
     }
 

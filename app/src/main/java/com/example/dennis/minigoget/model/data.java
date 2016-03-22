@@ -7,7 +7,9 @@ package com.example.dennis.minigoget.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class data {
+import io.realm.RealmObject;
+
+public class data extends RealmObject {
 
     @SerializedName("auth_token")
     @Expose

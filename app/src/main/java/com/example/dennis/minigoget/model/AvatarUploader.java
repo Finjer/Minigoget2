@@ -4,7 +4,9 @@ package com.example.dennis.minigoget.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AvatarUploader {
+import io.realm.RealmObject;
+
+public class AvatarUploader extends RealmObject{
 
     @SerializedName("url")
     @Expose

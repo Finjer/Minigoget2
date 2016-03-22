@@ -3,7 +3,9 @@ package com.example.dennis.minigoget.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BigThumb {
+import io.realm.RealmObject;
+
+public class BigThumb extends RealmObject {
 
     @SerializedName("url")
     @Expose

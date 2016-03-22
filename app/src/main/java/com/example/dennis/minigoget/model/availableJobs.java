@@ -6,14 +6,17 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class availableJobs{
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
+public class availableJobs extends RealmObject {
 
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("promo_id")
     @Expose
-    private Object promoId;
+    private Integer promoId;
     @SerializedName("poster_tip")
     @Expose
     private Integer posterTip;
@@ -40,7 +43,7 @@ public class availableJobs{
     private Integer rideId;
     @SerializedName("category")
     @Expose
-    private Object category;
+    private String category;
     @SerializedName("status")
     @Expose
     private String status;
@@ -49,10 +52,10 @@ public class availableJobs{
     private String postedAt;
     @SerializedName("approved_at")
     @Expose
-    private Object approvedAt;
+    private String approvedAt;
     @SerializedName("expired_at")
     @Expose
-    private Object expiredAt;
+    private String expiredAt;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -61,19 +64,19 @@ public class availableJobs{
     private String updatedAt;
     @SerializedName("cancel_reason")
     @Expose
-    private Object cancelReason;
+    private String cancelReason;
     @SerializedName("cancel_user_id")
     @Expose
-    private Object cancelUserId;
+    private Integer cancelUserId;
     @SerializedName("started_at")
     @Expose
-    private Object startedAt;
+    private String startedAt;
     @SerializedName("distance_covered")
     @Expose
     private Integer distanceCovered;
     @SerializedName("cancelled_at")
     @Expose
-    private Object cancelledAt;
+    private String cancelledAt;
     @SerializedName("deactivated")
     @Expose
     private Boolean deactivated;
@@ -85,10 +88,10 @@ public class availableJobs{
     private String startAt;
     @SerializedName("admin_paid_at")
     @Expose
-    private Object adminPaidAt;
+    private String adminPaidAt;
     @SerializedName("paid_by_id")
     @Expose
-    private Object paidById;
+    private Integer paidById;
     @SerializedName("meet_at_car")
     @Expose
     private Boolean meetAtCar;
@@ -100,22 +103,22 @@ public class availableJobs{
     private Boolean labour;
     @SerializedName("poster_review_id")
     @Expose
-    private Object posterReviewId;
+    private Integer posterReviewId;
     @SerializedName("gogetter_review_id")
     @Expose
-    private Object gogetterReviewId;
+    private Integer gogetterReviewId;
     @SerializedName("job_type")
     @Expose
     private String jobType;
     @SerializedName("dispatch_item")
     @Expose
-    private Object dispatchItem;
+    private String dispatchItem;
     @SerializedName("dispatch_item_others")
     @Expose
-    private Object dispatchItemOthers;
+    private String dispatchItemOthers;
     @SerializedName("completed_at")
     @Expose
-    private Object completedAt;
+    private String completedAt;
     @SerializedName("suggested_tip")
     @Expose
     private Integer suggestedTip;
@@ -139,10 +142,10 @@ public class availableJobs{
     private Boolean disablePromoTaskName;
     @SerializedName("tasks")
     @Expose
-    private List<Task> tasks = new ArrayList<Task>();
+    private RealmList<Task> tasks = new RealmList<Task>();
     @SerializedName("posters")
     @Expose
-    private List<Poster> posters = new ArrayList<Poster>();
+    private RealmList<Poster> posters = new RealmList<Poster>();
 
     /**
      *
@@ -167,7 +170,7 @@ public class availableJobs{
      * @return
      * The promoId
      */
-    public Object getPromoId() {
+    public Integer getPromoId() {
         return promoId;
     }
 
@@ -176,7 +179,7 @@ public class availableJobs{
      * @param promoId
      * The promo_id
      */
-    public void setPromoId(Object promoId) {
+    public void setPromoId(Integer promoId) {
         this.promoId = promoId;
     }
 
@@ -329,7 +332,7 @@ public class availableJobs{
      * @return
      * The category
      */
-    public Object getCategory() {
+    public String getCategory() {
         return category;
     }
 
@@ -338,7 +341,7 @@ public class availableJobs{
      * @param category
      * The category
      */
-    public void setCategory(Object category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -383,7 +386,7 @@ public class availableJobs{
      * @return
      * The approvedAt
      */
-    public Object getApprovedAt() {
+    public String getApprovedAt() {
         return approvedAt;
     }
 
@@ -392,7 +395,7 @@ public class availableJobs{
      * @param approvedAt
      * The approved_at
      */
-    public void setApprovedAt(Object approvedAt) {
+    public void setApprovedAt(String approvedAt) {
         this.approvedAt = approvedAt;
     }
 
@@ -401,7 +404,7 @@ public class availableJobs{
      * @return
      * The expiredAt
      */
-    public Object getExpiredAt() {
+    public String getExpiredAt() {
         return expiredAt;
     }
 
@@ -410,7 +413,7 @@ public class availableJobs{
      * @param expiredAt
      * The expired_at
      */
-    public void setExpiredAt(Object expiredAt) {
+    public void setExpiredAt(String expiredAt) {
         this.expiredAt = expiredAt;
     }
 
@@ -455,7 +458,7 @@ public class availableJobs{
      * @return
      * The cancelReason
      */
-    public Object getCancelReason() {
+    public String getCancelReason() {
         return cancelReason;
     }
 
@@ -464,7 +467,7 @@ public class availableJobs{
      * @param cancelReason
      * The cancel_reason
      */
-    public void setCancelReason(Object cancelReason) {
+    public void setCancelReason(String cancelReason) {
         this.cancelReason = cancelReason;
     }
 
@@ -473,7 +476,7 @@ public class availableJobs{
      * @return
      * The cancelUserId
      */
-    public Object getCancelUserId() {
+    public Integer getCancelUserId() {
         return cancelUserId;
     }
 
@@ -482,7 +485,7 @@ public class availableJobs{
      * @param cancelUserId
      * The cancel_user_id
      */
-    public void setCancelUserId(Object cancelUserId) {
+    public void setCancelUserId(Integer cancelUserId) {
         this.cancelUserId = cancelUserId;
     }
 
@@ -491,7 +494,7 @@ public class availableJobs{
      * @return
      * The startedAt
      */
-    public Object getStartedAt() {
+    public String getStartedAt() {
         return startedAt;
     }
 
@@ -500,7 +503,7 @@ public class availableJobs{
      * @param startedAt
      * The started_at
      */
-    public void setStartedAt(Object startedAt) {
+    public void setStartedAt(String startedAt) {
         this.startedAt = startedAt;
     }
 
@@ -527,7 +530,7 @@ public class availableJobs{
      * @return
      * The cancelledAt
      */
-    public Object getCancelledAt() {
+    public String getCancelledAt() {
         return cancelledAt;
     }
 
@@ -536,7 +539,7 @@ public class availableJobs{
      * @param cancelledAt
      * The cancelled_at
      */
-    public void setCancelledAt(Object cancelledAt) {
+    public void setCancelledAt(String cancelledAt) {
         this.cancelledAt = cancelledAt;
     }
 
@@ -599,7 +602,7 @@ public class availableJobs{
      * @return
      * The adminPaidAt
      */
-    public Object getAdminPaidAt() {
+    public String getAdminPaidAt() {
         return adminPaidAt;
     }
 
@@ -608,7 +611,7 @@ public class availableJobs{
      * @param adminPaidAt
      * The admin_paid_at
      */
-    public void setAdminPaidAt(Object adminPaidAt) {
+    public void setAdminPaidAt(String adminPaidAt) {
         this.adminPaidAt = adminPaidAt;
     }
 
@@ -617,7 +620,7 @@ public class availableJobs{
      * @return
      * The paidById
      */
-    public Object getPaidById() {
+    public Integer getPaidById() {
         return paidById;
     }
 
@@ -626,7 +629,7 @@ public class availableJobs{
      * @param paidById
      * The paid_by_id
      */
-    public void setPaidById(Object paidById) {
+    public void setPaidById(Integer paidById) {
         this.paidById = paidById;
     }
 
@@ -689,7 +692,7 @@ public class availableJobs{
      * @return
      * The posterReviewId
      */
-    public Object getPosterReviewId() {
+    public Integer getPosterReviewId() {
         return posterReviewId;
     }
 
@@ -698,7 +701,7 @@ public class availableJobs{
      * @param posterReviewId
      * The poster_review_id
      */
-    public void setPosterReviewId(Object posterReviewId) {
+    public void setPosterReviewId(Integer posterReviewId) {
         this.posterReviewId = posterReviewId;
     }
 
@@ -707,7 +710,7 @@ public class availableJobs{
      * @return
      * The gogetterReviewId
      */
-    public Object getGogetterReviewId() {
+    public Integer getGogetterReviewId() {
         return gogetterReviewId;
     }
 
@@ -716,7 +719,7 @@ public class availableJobs{
      * @param gogetterReviewId
      * The gogetter_review_id
      */
-    public void setGogetterReviewId(Object gogetterReviewId) {
+    public void setGogetterReviewId(Integer gogetterReviewId) {
         this.gogetterReviewId = gogetterReviewId;
     }
 
@@ -743,7 +746,7 @@ public class availableJobs{
      * @return
      * The dispatchItem
      */
-    public Object getDispatchItem() {
+    public String getDispatchItem() {
         return dispatchItem;
     }
 
@@ -752,7 +755,7 @@ public class availableJobs{
      * @param dispatchItem
      * The dispatch_item
      */
-    public void setDispatchItem(Object dispatchItem) {
+    public void setDispatchItem(String dispatchItem) {
         this.dispatchItem = dispatchItem;
     }
 
@@ -761,7 +764,7 @@ public class availableJobs{
      * @return
      * The dispatchItemOthers
      */
-    public Object getDispatchItemOthers() {
+    public String getDispatchItemOthers() {
         return dispatchItemOthers;
     }
 
@@ -770,7 +773,7 @@ public class availableJobs{
      * @param dispatchItemOthers
      * The dispatch_item_others
      */
-    public void setDispatchItemOthers(Object dispatchItemOthers) {
+    public void setDispatchItemOthers(String dispatchItemOthers) {
         this.dispatchItemOthers = dispatchItemOthers;
     }
 
@@ -779,7 +782,7 @@ public class availableJobs{
      * @return
      * The completedAt
      */
-    public Object getCompletedAt() {
+    public String getCompletedAt() {
         return completedAt;
     }
 
@@ -788,7 +791,7 @@ public class availableJobs{
      * @param completedAt
      * The completed_at
      */
-    public void setCompletedAt(Object completedAt) {
+    public void setCompletedAt(String completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -923,7 +926,7 @@ public class availableJobs{
      * @return
      * The tasks
      */
-    public List<Task> getTasks() {
+    public RealmList<Task> getTasks() {
         return tasks;
     }
 
@@ -932,7 +935,7 @@ public class availableJobs{
      * @param tasks
      * The tasks
      */
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(RealmList<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -941,7 +944,7 @@ public class availableJobs{
      * @return
      * The posters
      */
-    public List<Poster> getPosters() {
+    public RealmList<Poster> getPosters() {
         return posters;
     }
 
@@ -950,7 +953,7 @@ public class availableJobs{
      * @param posters
      * The posters
      */
-    public void setPosters(List<Poster> posters) {
+    public void setPosters(RealmList<Poster> posters) {
         this.posters = posters;
     }
 

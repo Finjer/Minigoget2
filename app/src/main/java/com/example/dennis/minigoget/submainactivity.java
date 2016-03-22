@@ -31,6 +31,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmList;
+import io.realm.RealmQuery;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -71,13 +75,23 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
 
                     if (response.isSuccess()) {
 
+                        //Realm test
+                        Realm.getDefaultInstance().beginTransaction();
+
+
+                        Realm.getDefaultInstance().copyToRealm(response.body());
+
+                        Realm.getDefaultInstance().commitTransaction();
+
+                        Log.d("Please: ", ""+Realm.getDefaultInstance().where(availableJobs.class).findAll().get(0).getId());
+
+
                         //receiving available jobs to this activity
                         joblists = response.body();
                         joblist_ready=false;
                         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                                 .findFragmentById(R.id.map);
                         mapFragment.getMapAsync(callback);
-
                     }
                     else {
 
@@ -139,7 +153,7 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        mMap.setInfoWindowAdapter( new custom_infowindow(getLayoutInflater(),joblists,thisclass));
+        mMap.setInfoWindowAdapter( new custom_infowindow(getLayoutInflater(),thisclass));
         // Add a marker in Sydney, Australia, and move the camera.
         LatLng goget = new LatLng(3.1598359,101.6587536);
         for(int i=0;i<joblists.size();i++){

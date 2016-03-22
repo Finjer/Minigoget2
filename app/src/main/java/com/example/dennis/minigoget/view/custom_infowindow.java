@@ -19,66 +19,67 @@ import com.google.android.gms.maps.model.Marker;
 
 import java.util.List;
 
+import io.realm.Realm;
+
 /**
  * Created by park on 2016-03-04.
  */
 public class custom_infowindow implements InfoWindowAdapter {
+
     private final LayoutInflater mInflater;
-    private final List<availableJobs> joblists;
     private final submainactivity current_class;
-    TextView job_type, job_tip, job_starttime, job_endtime;
-    Button job_detail;
+
     public custom_infowindow(LayoutInflater i){
         mInflater = i;
-        joblists = null;
         current_class = null;
     }
-    public custom_infowindow(LayoutInflater i, List<availableJobs> jobs, submainactivity upperclass) {
+    public custom_infowindow(LayoutInflater i, submainactivity upperclass) {
         mInflater = i;
-        joblists = jobs;
         current_class = upperclass;
 
     }
+
+
     @Override
     public View getInfoWindow(Marker marker) {
-        View v = mInflater.inflate(R.layout.joblist_info,null);
-        Log.d("aaa", marker.getSnippet());
-        Log.d("bbb",joblists.get(0).getId()+"");
-        Log.d("ccc",joblists.get(Integer.parseInt(marker.getSnippet())).getJobType());
-        job_type = (TextView) v.findViewById(R.id.jobTypeInfo);
-        job_type.setText(joblists.get(Integer.parseInt(marker.getSnippet())).getJobType());
-        //job_type.setText(joblists.get(Integer.parseInt(marker.getSnippet())).getJobType());
-        job_tip = (TextView) v.findViewById(R.id.tipInfo);
-        job_tip.setText("Tip: "+(joblists.get(Integer.parseInt(marker.getSnippet())).getAdminTip() + joblists.get(Integer.parseInt(marker.getSnippet())).getPosterTip()));
-        job_starttime = (TextView) v.findViewById(R.id.startTimeInfo);
-        job_starttime.setText("Start Time: \n"+joblists.get(Integer.parseInt(marker.getSnippet())).getStartAt());
-        job_endtime = (TextView) v.findViewById(R.id.endTimeInfo);
-        job_endtime.setText("End Time: \n"+joblists.get(Integer.parseInt(marker.getSnippet())).getExpireAt());
 
-        job_detail = (Button) v.findViewById(R.id.viewJobDetail);
-        job_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(current_class,Job_Detail_Activity.class);
-                current_class.startActivity(intent);
-            }
-        });
-        marker.setInfoWindowAnchor((float)1.9,(float)1.6);
-
-        return v;
+        return infoWindowSetup(marker);
+    }
+    @Override
+    public View getInfoContents(Marker marker) {
+         return null;
     }
 
 
-    @Override
-    public View getInfoContents(Marker marker) {
-/*
+
+    private View infoWindowSetup(Marker currentMarker){
+
+        //initialize target infowindow layout
         View v = mInflater.inflate(R.layout.joblist_info,null);
 
-        TextView text = (TextView) v.findViewById(R.id.textView);
-        //text.setText("testing:1");
+        //Withdraw InfoWindowRealm data
+        List<availableJobs> joblists = Realm.getDefaultInstance().where(availableJobs.class).findAll();
+        Log.d("insideinfowindow: ", joblists.get(Integer.parseInt(currentMarker.getSnippet())).getId()+"");
+        TextView job_type = (TextView) v.findViewById(R.id.jobTypeInfo);
+        job_type.setText(joblists.get(Integer.parseInt(currentMarker.getSnippet())).getJobType());
+        //job_type.setText(joblists.get(Integer.parseInt(marker.getSnippet())).getJobType());
+        TextView job_tip = (TextView) v.findViewById(R.id.tipInfo);
+        job_tip.setText("Tip: "+(joblists.get(Integer.parseInt(currentMarker.getSnippet())).getAdminTip() + joblists.get(Integer.parseInt(currentMarker.getSnippet())).getPosterTip()));
+        TextView  job_starttime = (TextView) v.findViewById(R.id.startTimeInfo);
+        job_starttime.setText("Start Time: \n"+joblists.get(Integer.parseInt(currentMarker.getSnippet())).getStartAt());
+        TextView job_endtime = (TextView) v.findViewById(R.id.endTimeInfo);
+        job_endtime.setText("End Time: \n" + joblists.get(Integer.parseInt(currentMarker.getSnippet())).getExpireAt());
 
+        Button job_detail = (Button) v.findViewById(R.id.viewJobDetail);
+        job_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(current_class, Job_Detail_Activity.class);
+                current_class.startActivity(intent);
+            }
+        });
+        currentMarker.setInfoWindowAnchor((float)1.9,(float)1.6);
 
-
-        return v;*/ return null;
+        return v;
     }
 }
