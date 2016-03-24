@@ -55,11 +55,9 @@ public class MainActivity extends Activity implements LoginView {
 
     @Override
     protected void onDestroy() {
-        //eventbus.unregister(this);
-        presenter.unRegisterEventBus();
-        Log.d("Lastest","testing");
-        super.onDestroy();
 
+        presenter.unRegisterEventBus();
+        super.onDestroy();
 
     }
 

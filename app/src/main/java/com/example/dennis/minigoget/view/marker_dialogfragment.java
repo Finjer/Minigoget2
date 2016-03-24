@@ -67,7 +67,6 @@ public class marker_dialogfragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(current_class, Job_Detail_Activity.class);
-                Log.d("intent test: ",""+joblists.get(position).getId());
                 intent.putExtra("goget_id",joblists.get(position).getId());
                 intent.putExtra("authen_token",authen_token);
                 current_class.startActivity(intent);

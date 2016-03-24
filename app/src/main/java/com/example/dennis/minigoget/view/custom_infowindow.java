@@ -59,10 +59,9 @@ public class custom_infowindow implements InfoWindowAdapter {
 
         //Withdraw InfoWindowRealm data
         List<availableJobs> joblists = Realm.getDefaultInstance().where(availableJobs.class).findAll();
-        Log.d("insideinfowindow: ", joblists.get(Integer.parseInt(currentMarker.getSnippet())).getId()+"");
+
         TextView job_type = (TextView) v.findViewById(R.id.jobTypeInfo);
         job_type.setText(joblists.get(Integer.parseInt(currentMarker.getSnippet())).getJobType());
-        //job_type.setText(joblists.get(Integer.parseInt(marker.getSnippet())).getJobType());
         TextView job_tip = (TextView) v.findViewById(R.id.tipInfo);
         job_tip.setText("Tip: "+(joblists.get(Integer.parseInt(currentMarker.getSnippet())).getAdminTip() + joblists.get(Integer.parseInt(currentMarker.getSnippet())).getPosterTip()));
         TextView  job_starttime = (TextView) v.findViewById(R.id.startTimeInfo);

@@ -52,7 +52,7 @@ public class Job_Detail_Activity extends Activity {
         //Get current Activity's dp scale
         scale = getCurrentContext().getResources().getDisplayMetrics().density;
         int pixels = (int) (52 * scale + 0.5f);
-        Log.d("aaa",""+pixels);
+        Log.d("aaa",""+id);
         //For error message for loading info
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
