@@ -95,9 +95,10 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
     }
     @Override
     protected void onDestroy() {
-
+        presenter.clearRealmData();
         presenter.unRegisterEventBus();
         super.onDestroy();
+
 
     }
 }
