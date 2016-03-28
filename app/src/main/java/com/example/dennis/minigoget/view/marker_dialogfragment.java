@@ -1,13 +1,8 @@
 package com.example.dennis.minigoget.view;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.dennis.minigoget.Job_Detail_Activity;
+import com.example.dennis.minigoget.SingleJobDetailActivity;
 import com.example.dennis.minigoget.R;
 import com.example.dennis.minigoget.model.availableJobs;
 import com.example.dennis.minigoget.submainactivity;
@@ -66,7 +61,7 @@ public class marker_dialogfragment extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(current_class, Job_Detail_Activity.class);
+                Intent intent = new Intent(current_class, SingleJobDetailActivity.class);
                 intent.putExtra("goget_id",joblists.get(position).getId());
                 intent.putExtra("authen_token",authen_token);
                 current_class.startActivity(intent);

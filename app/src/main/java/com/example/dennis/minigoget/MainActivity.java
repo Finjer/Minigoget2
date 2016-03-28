@@ -31,8 +31,6 @@ public class MainActivity extends Activity implements LoginView {
 
         presenter = new LoginPresenter(this);
 
-        presenter.registerEventBus();
-
         //Input retrieving point.
         minigoget_email = (EditText) findViewById(R.id.mainmenu_edittext_email);
         minigoget_password = (EditText) findViewById(R.id.mainmenu_edittext_password);
@@ -54,8 +52,25 @@ public class MainActivity extends Activity implements LoginView {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onResume() {
+        presenter.registerEventBus();
+        super.onResume();
 
+    }
+    @Override
+    protected void onStop() {
+        presenter.unRegisterEventBus();
+        super.onStop();
+    }
+    @Override
+    public void onBackPressed() {
+        presenter.unRegisterEventBus();
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
         presenter.unRegisterEventBus();
         super.onDestroy();
 
@@ -68,7 +83,6 @@ public class MainActivity extends Activity implements LoginView {
         Intent intent = new Intent(MainActivity.this, submainactivity.class);
         intent.putExtra("authen_token", authen_token);
         startActivity(intent);
-        finish();
 
     }
 

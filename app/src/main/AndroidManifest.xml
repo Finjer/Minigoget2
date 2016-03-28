@@ -29,7 +29,7 @@
         <activity android:name=".submainactivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Job_Detail_Activity"
+        <activity android:name=".SingleJobDetailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

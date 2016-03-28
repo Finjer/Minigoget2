@@ -4,31 +4,17 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
-import com.example.dennis.minigoget.API.GoGetService;
 import com.example.dennis.minigoget.Presenter.IMapPresenter;
 import com.example.dennis.minigoget.Presenter.MapPresenter;
-import com.example.dennis.minigoget.Service.ServiceGenerator;
 import com.example.dennis.minigoget.model.availableJobs;
-import com.example.dennis.minigoget.view.custom_infowindow;
-import com.example.dennis.minigoget.view.marker_dialogfragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
 import java.util.List;
-
-import io.realm.Realm;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class submainactivity extends FragmentActivity implements OnMapReadyCallback, MapView {
@@ -37,7 +23,6 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
     protected submainactivity thisclass;
     private List<availableJobs> joblists;
     boolean joblist_ready=true;
-    private String authen_token;
     private IMapPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +31,15 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
 
         callback = this;
         thisclass = submainactivity.this;
-        presenter = new MapPresenter(this);
-        presenter.registerEventBus();
 
         //getting intent data authentication token;
         Intent intent = this.getIntent();
-        authen_token = intent.getExtras().getString("authen_token");
-        Log.d("Token:",authen_token );
-        presenter.requestJobList(authen_token);
-
-
-        //For error message for pressing login
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        presenter = new MapPresenter(this,intent.getExtras().getString("authen_token"));
 
     }
 
     public void onViewDetailPressed(){
-        Intent intent = new Intent(this, Job_Detail_Activity.class);
+        Intent intent = new Intent(this, SingleJobDetailActivity.class);
         startActivity(intent);
     }
     @Override
@@ -70,7 +47,7 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
 
         presenter.setCustomInfoWindowAdapter(googleMap,thisclass);
         presenter.setMarker(googleMap);
-        presenter.setMarkerListener(googleMap,thisclass,authen_token);
+        presenter.setMarkerListener(googleMap,thisclass);
         LatLng goget = new LatLng(3.1598359,101.6587536);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(goget, 10));
     }
@@ -99,6 +76,26 @@ public class submainactivity extends FragmentActivity implements OnMapReadyCallb
         presenter.unRegisterEventBus();
         super.onDestroy();
 
+    }
+    @Override
+    protected void onResume() {
+        presenter.clearRealmData();
+        presenter.registerEventBus();
+        presenter.requestJobList();
+        super.onResume();
 
     }
+    @Override
+    protected void onStop() {
+        presenter.unRegisterEventBus();
+        super.onStop();
+    }
+    @Override
+    public void onBackPressed() {
+        presenter.clearRealmData();
+        presenter.unRegisterEventBus();
+        super.onBackPressed();
+        finish();
+    }
+
 }
