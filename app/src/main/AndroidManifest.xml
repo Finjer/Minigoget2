@@ -26,14 +26,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.example.dennis.minigoget.app">
-        <activity android:name=".submainactivity"
+        <activity android:name=".View.Activity.MapActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SingleJobDetailActivity"
+        <activity android:name=".View.Activity.SingleJobDetailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".View.Activity.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

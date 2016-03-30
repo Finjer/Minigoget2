@@ -1,22 +1,22 @@
 package com.example.dennis.minigoget.Event;
 
-import com.example.dennis.minigoget.model.availableJobs;
+import com.example.dennis.minigoget.Model.AvailableJobs;
 
 /**
  * Created by park on 2016-03-25.
  */
 public class OnSingleJobRetrieveEvent {
 
-    availableJobs singleJob;
+    AvailableJobs singleJob;
 
-    public OnSingleJobRetrieveEvent(availableJobs singleJob){
+    public OnSingleJobRetrieveEvent(AvailableJobs singleJob){
         this.singleJob = singleJob;
     }
-    public availableJobs getSingleJob() {
+    public AvailableJobs getSingleJob() {
         return singleJob;
     }
 
-    public void setSingleJob(availableJobs singleJob) {
+    public void setSingleJob(AvailableJobs singleJob) {
         this.singleJob = singleJob;
     }
 

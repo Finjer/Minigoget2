@@ -1,6 +1,6 @@
 package com.example.dennis.minigoget.Presenter;
 
-import com.example.dennis.minigoget.submainactivity;
+import com.example.dennis.minigoget.View.Activity.MapActivity;
 import com.google.android.gms.maps.GoogleMap;
 
 /**
@@ -9,12 +9,12 @@ import com.google.android.gms.maps.GoogleMap;
 public interface IMapPresenter {
 
     void requestJobList();
-    void setCustomInfoWindowAdapter(GoogleMap gMap,submainactivity invokedClass);
+    void setCustomInfoWindowAdapter(GoogleMap gMap,MapActivity invokedClass);
     void setMarker(GoogleMap gMap);
-    void setMarkerListener(GoogleMap gMap, submainactivity invokedClass);
+    void setMarkerListener(GoogleMap gMap, MapActivity invokedClass);
     void clearRealmData();
     void unRegisterEventBus();
     void registerEventBus();
-    String getAuthen_token();
+    String getAuthenToken();
 
 }

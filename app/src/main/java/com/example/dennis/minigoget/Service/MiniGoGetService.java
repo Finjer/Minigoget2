@@ -2,15 +2,14 @@ package com.example.dennis.minigoget.Service;
 
 import android.util.Log;
 
-import com.example.dennis.minigoget.API.GoGetService;
 import com.example.dennis.minigoget.Event.LoginFailureEvent;
 import com.example.dennis.minigoget.Event.LoginSuccessEvent;
 import com.example.dennis.minigoget.Event.NetworkFailureEvent;
 import com.example.dennis.minigoget.Event.OnReceiveJobListEvent;
 import com.example.dennis.minigoget.Event.OnSingleJobRetrieveEvent;
-import com.example.dennis.minigoget.model.availableJobs;
-import com.example.dennis.minigoget.model.gogetLogin;
-import com.example.dennis.minigoget.model.userContainer;
+import com.example.dennis.minigoget.Model.AvailableJobs;
+import com.example.dennis.minigoget.Model.GoGetLogin;
+import com.example.dennis.minigoget.Model.UserContainer;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,12 +24,12 @@ import retrofit2.Response;
  */
 public class MiniGoGetService {
 
-    public static void loginAttempt(userContainer container){
-        GoGetService loginTesting = ServiceGenerator.createService(GoGetService.class);
-        Call<gogetLogin> call = loginTesting.login(container);
-        call.enqueue(new Callback<gogetLogin>() {
+    public static void loginAttempt(UserContainer container){
+        GoGetRetrofitService loginTesting = ServiceGenerator.createService(GoGetRetrofitService.class);
+        Call<GoGetLogin> call = loginTesting.login(container);
+        call.enqueue(new Callback<GoGetLogin>() {
             @Override
-            public void onResponse(Call<gogetLogin> call, Response<gogetLogin> response) {
+            public void onResponse(Call<GoGetLogin> call, Response<GoGetLogin> response) {
                 if (response.isSuccess() == true) {
                     LoginSuccessEvent loginEvent = new LoginSuccessEvent(response.body().getData().getAuthToken());
                     EventBus.getDefault().post(loginEvent);
@@ -41,26 +40,25 @@ public class MiniGoGetService {
                 }
             }
             @Override
-            public void onFailure(Call<gogetLogin> call, Throwable t) {
+            public void onFailure(Call<GoGetLogin> call, Throwable t) {
                 LoginFailureEvent loginEvent = new LoginFailureEvent("Network Error",true);
                 EventBus.getDefault().post(loginEvent);
             }
 
         });
     }
-    public static void requestJobList(String authen_token){
+    public static void requestJobList(String authenToken){
 
         //Service to retrieve current user's available jobs
-        GoGetService generateJobs = ServiceGenerator.createService(GoGetService.class, authen_token);
-        Call<List<availableJobs>> call = generateJobs.getJobs();
+        GoGetRetrofitService generateJobs = ServiceGenerator.createService(GoGetRetrofitService.class, authenToken);
+        Call<List<AvailableJobs>> call = generateJobs.getJobs();
 
-        call.enqueue(new Callback<List<availableJobs>>() {
+        call.enqueue(new Callback<List<AvailableJobs>>() {
             @Override
-            public void onResponse(Call<List<availableJobs>> call, Response<List<availableJobs>> response) {
+            public void onResponse(Call<List<AvailableJobs>> call, Response<List<AvailableJobs>> response) {
                 if (response.isSuccess()) {
                     OnReceiveJobListEvent onReceiveJobListEvent = new OnReceiveJobListEvent(response);
                     EventBus.getDefault().post(onReceiveJobListEvent);
-
                 }
                 else {
                 }
@@ -69,21 +67,22 @@ public class MiniGoGetService {
 
             //occurs when network error( most likely no network) happens
             @Override
-            public void onFailure(Call<List<availableJobs>> call, Throwable t) {
+            public void onFailure(Call<List<AvailableJobs>> call, Throwable t) {
+                Log.d("numberformat?: ",t.toString());
                 NetworkFailureEvent networkFailureEvent = new NetworkFailureEvent(t.getMessage());
                 EventBus.getDefault().post(networkFailureEvent);
             }
         });
     }
-    public static void requestSingleJob(String authen_token, int jobId){
+    public static void requestSingleJob(String authenToken, int jobId){
 
         //Service to retrieve current user's available jobs
-        GoGetService generateJobs = ServiceGenerator.createService(GoGetService.class, authen_token);
-        Call<availableJobs> call = generateJobs.getSingleJob(jobId);
+        GoGetRetrofitService generateJobs = ServiceGenerator.createService(GoGetRetrofitService.class, authenToken);
+        Call<AvailableJobs> call = generateJobs.getSingleJob(jobId);
 
-        call.enqueue(new Callback<availableJobs>() {
+        call.enqueue(new Callback<AvailableJobs>() {
             @Override
-            public void onResponse(Call<availableJobs> call, Response<availableJobs> response) {
+            public void onResponse(Call<AvailableJobs> call, Response<AvailableJobs> response) {
                 if (response.isSuccess()) {
                     Log.d("requestJobRetrieve: ","Sucess if");
                     OnSingleJobRetrieveEvent onReceiveJobListEvent = new OnSingleJobRetrieveEvent(response.body());
@@ -97,7 +96,7 @@ public class MiniGoGetService {
 
             //occurs when network error( most likely no network) happens
             @Override
-            public void onFailure(Call<availableJobs> call, Throwable t) {
+            public void onFailure(Call<AvailableJobs> call, Throwable t) {
                 Log.d("requestJobRetrieve: ","Failure");
                 NetworkFailureEvent networkFailureEvent = new NetworkFailureEvent(t.getMessage());
                 EventBus.getDefault().post(networkFailureEvent);

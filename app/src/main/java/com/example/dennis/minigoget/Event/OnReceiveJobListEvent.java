@@ -1,6 +1,6 @@
 package com.example.dennis.minigoget.Event;
 
-import com.example.dennis.minigoget.model.availableJobs;
+import com.example.dennis.minigoget.Model.AvailableJobs;
 
 import java.util.List;
 
@@ -11,17 +11,17 @@ import retrofit2.Response;
  */
 public class OnReceiveJobListEvent {
 
-    Response<List<availableJobs>> jobList;
+    Response<List<AvailableJobs>> jobList;
 
-    public OnReceiveJobListEvent(Response<List<availableJobs>> jobList){
+    public OnReceiveJobListEvent(Response<List<AvailableJobs>> jobList){
         this.jobList = jobList;
     }
 
-    public Response<List<availableJobs>> getJobList() {
+    public Response<List<AvailableJobs>> getJobList() {
         return jobList;
     }
 
-    public void setJobList(Response<List<availableJobs>> jobList) {
+    public void setJobList(Response<List<AvailableJobs>> jobList) {
         this.jobList = jobList;
     }
 

@@ -5,17 +5,17 @@ package com.example.dennis.minigoget.Event;
  */
 public class LoginSuccessEvent {
 
-    String authen_token;
+    String authenToken;
 
-    public LoginSuccessEvent(String authen_token){
-        this.authen_token = authen_token;
+    public LoginSuccessEvent(String authenToken){
+        this.authenToken = authenToken;
     }
 
-    public String getAuthen_token() {
-        return authen_token;
+    public String getAuthenToken() {
+        return authenToken;
     }
 
-    public void setAuthen_token(String authen_token) {
-        this.authen_token = authen_token;
+    public void setAuthenToken(String authenToken) {
+        this.authenToken = authenToken;
     }
 }

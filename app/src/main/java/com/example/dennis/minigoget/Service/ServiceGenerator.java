@@ -1,7 +1,5 @@
 package com.example.dennis.minigoget.Service;
 
-import android.util.Base64;
-
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.FieldNamingPolicy;
@@ -73,7 +71,7 @@ public class ServiceGenerator {
         return retrofit.create(serviceClass);
        // return createService(serviceClass, null, null);
     }
-    public static <S> S createService(Class<S> serviceClass, final String authen_token){
+    public static <S> S createService(Class<S> serviceClass, final String authenToken){
 
         httpClient.addInterceptor(new Interceptor() {
             @Override
@@ -85,7 +83,7 @@ public class ServiceGenerator {
                         //.header("Authorization", basic)
                         .header("Accept", "application/json")
                         .header("Content-Type", "application/json")
-                        .header("Authorization", "Token token="+authen_token)
+                        .header("Authorization", "Token token="+authenToken)
                         .method(original.method(), original.body());
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
@@ -98,7 +96,7 @@ public class ServiceGenerator {
         return retrofit.create(serviceClass);
         // return createService(serviceClass, null, null);
     }
-    public static <S> S createService(Class<S> serviceClass, String user_id, String user_password){
+    public static <S> S createService(Class<S> serviceClass, String userId, String userPassword){
 
             httpClient.addInterceptor(new Interceptor() {
                 @Override
