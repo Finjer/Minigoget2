@@ -50,10 +50,7 @@ public class LoginPresenter implements ILoginPresenter{
         return container;
     }
     public void loginAttempt(String userEmail, String userPassword){
-        RealmResults<AvailableJobs> jobList = Realm.getDefaultInstance().where(AvailableJobs.class).findAll();
-        Realm.getDefaultInstance().beginTransaction();
-        jobList.clear();
-        Realm.getDefaultInstance().commitTransaction();
+
         MiniGoGetService.loginAttempt(createLoginContainer(userEmail, userPassword));
 
     }

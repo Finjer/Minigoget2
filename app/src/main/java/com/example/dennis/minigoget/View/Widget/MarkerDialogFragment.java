@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dennis.minigoget.Service.MiniGoGetService;
 import com.example.dennis.minigoget.View.Activity.SingleJobDetailActivity;
 import com.example.dennis.minigoget.R;
 import com.example.dennis.minigoget.Model.AvailableJobs;
@@ -64,7 +65,7 @@ public class MarkerDialogFragment extends DialogFragment {
 
                 Intent intent = new Intent(currentClass, SingleJobDetailActivity.class);
                 intent.putExtra("gogetId",joblists.get(position).getId());
-                intent.putExtra("authenToken", authenToken);
+                intent.putExtra(MiniGoGetService.AUTHENTICATION_TOKEN, authenToken);
                 currentClass.startActivity(intent);
                 dismiss();
             }
